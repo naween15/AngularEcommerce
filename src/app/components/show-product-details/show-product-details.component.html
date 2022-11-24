@@ -1,0 +1,54 @@
+<div class="p-3 mt-5">
+  <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.productId}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Product Name">
+      <th mat-header-cell *matHeaderCellDef>Product Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef>Product Description</th>
+      <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Product Discounted Price">
+      <th mat-header-cell *matHeaderCellDef>Product Discounted Price</th>
+      <td mat-cell *matCellDef="let element"> {{element.productDiscountedPrice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Product Actual Price">
+      <th mat-header-cell *matHeaderCellDef>Product Actual Price</th>
+      <td mat-cell *matCellDef="let element"> {{element.productActualPrice}} </td>
+    </ng-container>
+    <!-- images -->
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="showPopup(element)" mat-icon-button>
+          <mat-icon color="primary">images</mat-icon>
+        </button>
+        <button (click)="editProduct(element.productId)" mat-icon-button>
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button (click)="deleteProduct(element.productId)" mat-icon-button>
+          <mat-icon color="accent">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
